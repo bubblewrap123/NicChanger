@@ -1,12 +1,12 @@
 $wmiDescription = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').Description
 
-if ($wmi -like "Intel(R)*") {
+if ($wmiDescription -like "Intel(R)*") {
 	write-host "E1000"
-	write-host $wmi
+	write-host $wmiDescription
 }
-Elseif ($wmi -like "vmxnet3*") {
+Elseif ($wmiDescription -like "vmxnet3*") {
 	write-host "vmxnet3"
-	write-host $wmi
+	write-host $wmiDescription
 }
 else {
 	write-host "ERROR: Undefined NIC, exiting"
