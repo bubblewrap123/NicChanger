@@ -1,11 +1,15 @@
 $FilePath = "c:\tools\Network_Interface.csv"
+$FilePathOutput = "c:\tools\Network_Interface1.csv"
+
 import-CSV $FilePath | ForEach-Object {
 	$VM = $_.VM
 	$OS = (Get-VMGuest -VM $VM).OSFullName
+	$VMPowerstate = (get-vm $VM).powerstate
 	if ($OS -like 'Microsoft*') {
-		write-host "Microsoft"
 		write-host $OS
-		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3
+		write-host $VMPowerstate
+		"VM,Powerstate" -join ',' | Out-File -FilePath $FilePathOutput -Append -Width 200;
+		$VM,$VMPowerstate -join ',' | Out-File -FilePath $FilePathOutput -Append -Width 200;
 	}
 	elseif ($OS -like 'Red Hat*'){
 		write-host "Linux"
@@ -22,3 +26,6 @@ import-CSV $FilePath | ForEach-Object {
 		}
 	}
 }
+
+
+#((get-vm $VM).powerstate -ne "PoweredOff") {

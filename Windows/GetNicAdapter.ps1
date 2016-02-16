@@ -1,4 +1,4 @@
-$wmi = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').Description
+$wmiDescription = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').Description
 
 if ($wmi -like "Intel(R)*") {
 	write-host "E1000"
