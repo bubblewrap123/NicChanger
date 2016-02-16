@@ -27,5 +27,3 @@ import-CSV $FilePath | ForEach-Object {
 	}
 }
 
-
-#((get-vm $VM).powerstate -ne "PoweredOff") {
