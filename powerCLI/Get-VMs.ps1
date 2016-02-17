@@ -5,6 +5,19 @@
 ######  Author Fredrik Treimo.                                  #######
 #######################################################################
 
+#/********************************************************           
+#    * hello -- program to print out "Hello World".         *   
+#    *                                                      *   
+#    * Author:  Fredrik, Treimo                             *   
+#    *                                                      *   
+#    * Purpose:  outputs all VMs in vCenter to a file       *   
+#    *                                                      *   
+#    * Usage:                                               *   
+#    *      Runs the program and the message appears.       *   
+#    ********************************************************/ 
+
+
+
 $FilePath = "c:\tools\Network_Interface.csv"
 
 get-networkadapter(get-vm) | where {$_.Type -eq "e1000"} | Select @{N="VM";E={$_.Parent.Name}},Type | export-Csv  $FilePath -NoTypeInformation
