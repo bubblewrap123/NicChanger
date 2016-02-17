@@ -9,7 +9,7 @@ $computername = $env:computername
 $FilePath = "c:\$computername\IpSettings.csv"
 $FolderPath = "c:\$computername\"
 
-If ($(Test-Path $FilePath) -eq $FALSE) { #Lager info kun hvis fil ikke eksiterer
+If ($(Test-Path $FilePath) -eq $FALSE) { #Stores NIC IP settings if config file does not already exist.
 	#Fetching the active NIC IP settings
 	$index = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').index
 	$wmi = Get-WmiObject win32_networkadapterconfiguration -filter "Index = $index"
