@@ -7,7 +7,7 @@ Changes NICs from E1000 to VMXNET3 whitout losing OS specific IP settings.
 + Windows Server 2012
 
 # Intent
-The purpose of this project is to create a easy method of automaticly change network adapter type from E1000 to VMXNET3 on VMware VMs. This without losing the current the Windows IP configuration. Since the IP settings is bound to a spesific network adapter inside Windows, configuration like IP, Gateway, Subnet, DNS etc is lost upon NIC adapter change in VMware.
+The purpose of this project is to create a easy method of automaticly change network adapter type from E1000 to VMXNET3 on VMware VMs. This without losing the current Windows IP configuration. Since the IP settings is bound to a spesific network adapter inside Windows, configuration like IP, Gateway, Subnet, DNS etc is lost upon NIC adapter change in VMware.
 
 # How it works
 Comming soon..
