@@ -19,6 +19,7 @@ If ($(Test-Path $FilePath) -eq $FALSE) { #Stores NIC IP settings if config file 
 	$wmi = Get-WmiObject win32_networkadapterconfiguration -filter "Index = $index"
 	$wmiDescription = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').Description
 	
+	#Store settings only if adapter equals E1000
 	if ($wmiDescription -like "Intel(R)*") {
 		#Is DHCP enabled?
 		$DHCP = $wmi.DHCPEnabled
@@ -38,6 +39,9 @@ If ($(Test-Path $FilePath) -eq $FALSE) { #Stores NIC IP settings if config file 
 		#Saves IP settings to file
 		"IP,MASK,GW,DNS1,DNS2,DHCP,MAC" -join ',' | Out-File -FilePath $FilePath -Width 200;
 		$IP,$MASK,$GW,$DNS1,$DNS2,$DHCP,$MAC -join ',' | Out-File -FilePath $FilePath -Append -Width 200;
+	}
+	else {
+	#Do nothing
 	}
 }
 else {
