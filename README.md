@@ -1,5 +1,5 @@
 # NicChanger
-Changes NICs from E1000 to VMXNET3 whitout losing in OS IP settings.
+Changes NICs from E1000 to VMXNET3 whitout losing OS specific IP settings.
 
 # Supported OS
 + Windows Server 2008
