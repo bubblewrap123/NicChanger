@@ -1,5 +1,15 @@
+#######################################################################
+######	This script is intended to be run in powerCLI			#######
+######	It relies on output from Get-VMs.ps1					#######
+######	Sorts through all VMs, outputs WServers and powerstate	#######
+######	Author Fredrik Treimo.									#######
+#######################################################################
+
+
 $FilePath = "c:\tools\Network_Interface.csv"
 $FilePathOutput = "c:\tools\Network_Interface_Sorted.csv"
+
+"VM,Powerstate" -join ',' | Out-File -FilePath $FilePathOutput -Width 200;
 
 import-CSV $FilePath | ForEach-Object {
 	$VM = $_.VM
@@ -8,7 +18,6 @@ import-CSV $FilePath | ForEach-Object {
 	if ($OS -like 'Microsoft*') {
 		write-host $OS
 		write-host $VMPowerstate
-		"VM,Powerstate" -join ',' | Out-File -FilePath $FilePathOutput -Append -Width 200;
 		$VM,$VMPowerstate -join ',' | Out-File -FilePath $FilePathOutput -Append -Width 200;
 	}
 	elseif ($OS -like 'Red Hat*'){

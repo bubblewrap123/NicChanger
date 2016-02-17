@@ -1,22 +1,27 @@
+#######################################################################
+######	This script is intended to be run as a scheduled task	#######
+######	It stores the active NIC IP config to file.				#######
+######	After this is done, you can safely run Change-NIC.ps1	#######
+######	Author Fredrik Treimo.									#######
+#######################################################################
 
 $computername = $env:computername
 $FilePath = "c:\$computername\IpSettings.csv"
 $FolderPath = "c:\$computername\"
 
 If ($(Test-Path $FilePath) -eq $FALSE) { #Lager info kun hvis fil ikke eksiterer
-	#Henter IP instillinger for E1000 adapter
+	#Fetching the active NIC IP settings
 	$index = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').index
 	$wmi = Get-WmiObject win32_networkadapterconfiguration -filter "Index = $index"
 	
-	#Lagrer resulatet av spørringen om dhcp er aktivert.
+	#Is DHCP enabled?
 	$DHCP = $wmi.DHCPEnabled
-	#Tester om mappen som skal bli opprettet for output eksisterer,
-	#gjør den ikke det opprettes den. Finnes den fra før skippes mappeopprettelsen.
+	#Does folder already exist?
 	if ($(Test-Path $FolderPath) -eq $FALSE) { 
 		New-Item $FolderPath -type directory
 		}
 	else {
-	#Skipp
+	#Don't do anything
 	}
 	$IP = $wmi.IPAddress[0]
 	$MASK = $wmi.IPSubnet[0]
@@ -24,7 +29,7 @@ If ($(Test-Path $FilePath) -eq $FALSE) { #Lager info kun hvis fil ikke eksiterer
 	$MAC = $wmi.MACAddress
 	$DNS1 = $wmi.DNSServerSearchOrder[0]
 	$DNS2 = $wmi.DNSServerSearchOrder[1]
-	#Lagrer config til fil, slik at scriptet "SetIpConfig.ps1" kan hente disse inn etter reboot.
+	#Saves IP settings to file
 	"IP,MASK,GW,DNS1,DNS2,DHCP,MAC" -join ',' | Out-File -FilePath $FilePath -Width 200;
 	$IP,$MASK,$GW,$DNS1,$DNS2,$DHCP,$MAC -join ',' | Out-File -FilePath $FilePath -Append -Width 200;
 }
