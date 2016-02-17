@@ -1,8 +1,8 @@
 #######################################################################
 ######	This script is intended to be run as a scheduled task	#######
 ######	It uses the output from GetIPConfig.ps1 and stores it-	#######
-######	in the active VMXNET3 adapter configuration				#######
-######	Author Fredrik Treimo.									#######
+######	in the active VMXNET3 adapter configuration		#######
+######	Author Fredrik Treimo.					#######
 #######################################################################
 
 $computername = $env:computername
