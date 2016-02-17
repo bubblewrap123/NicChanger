@@ -1,5 +1,5 @@
 $FilePath = "c:\tools\Network_Interface.csv"
-$FilePathOutput = "c:\tools\Network_Interface1.csv"
+$FilePathOutput = "c:\tools\Network_Interface_Sorted.csv"
 
 import-CSV $FilePath | ForEach-Object {
 	$VM = $_.VM

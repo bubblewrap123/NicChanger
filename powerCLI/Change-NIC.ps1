@@ -1,5 +1,5 @@
 
-$FilePath = "c:\tools\Network_Interface1.csv"
+$FilePath = "c:\tools\Network_Interface_Sorted.csv"
 
 
 import-CSV $FilePath | ForEach-Object {
@@ -14,7 +14,7 @@ import-CSV $FilePath | ForEach-Object {
 	}
 	elseif ($VMPowerstate -eq "PoweredOn") {
 		Shutdown-VMGuest $VM -Confirm:$false
-		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3
+		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
 		Start-VM $VM
 	}
 	else {

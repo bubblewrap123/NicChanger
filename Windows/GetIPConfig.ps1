@@ -1,14 +1,13 @@
-#Kjører kun script hvis den har nett
-If ($(Test-Connection 10.178.127.42 -quiet) -eq $TRUE) { #NTP server Testsenter
+
+$computername = $env:computername
+$FilePath = "c:\$computername\IpSettings.csv"
+$FolderPath = "c:\$computername\"
+
+If ($(Test-Path $FilePath) -eq $FALSE) { #Lager info kun hvis fil ikke eksiterer
 	#Henter IP instillinger for E1000 adapter
 	$index = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').index
 	$wmi = Get-WmiObject win32_networkadapterconfiguration -filter "Index = $index"
-
-	#For ordensskyld lagrer vi variabler for maskinnavn og hvor output skal lagres
-	$computername = $env:computername
-	$FilePath = "c:\$computername\IpSettings.csv"
-	$FolderPath = "c:\$computername\"
-
+	
 	#Lagrer resulatet av spørringen om dhcp er aktivert.
 	$DHCP = $wmi.DHCPEnabled
 	#Tester om mappen som skal bli opprettet for output eksisterer,
@@ -29,3 +28,9 @@ If ($(Test-Connection 10.178.127.42 -quiet) -eq $TRUE) { #NTP server Testsenter
 	"IP,MASK,GW,DNS1,DNS2,DHCP,MAC" -join ',' | Out-File -FilePath $FilePath -Width 200;
 	$IP,$MASK,$GW,$DNS1,$DNS2,$DHCP,$MAC -join ',' | Out-File -FilePath $FilePath -Append -Width 200;
 }
+else {
+	#write-host "file exist, skipping"
+	#Do nothing
+}
+
+#$(Test-Connection 10.178.127.42 -quiet)
