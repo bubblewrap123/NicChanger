@@ -1,8 +1,8 @@
 #######################################################################
 ######	This script is intended to be run as a scheduled task	#######
-######	It stores the active NIC IP config to file.				#######
+######	It stores the active NIC IP config to file.		#######
 ######	After this is done, you can safely run Change-NIC.ps1	#######
-######	Author Fredrik Treimo.									#######
+######	Author Fredrik Treimo.					#######
 #######################################################################
 
 $computername = $env:computername
