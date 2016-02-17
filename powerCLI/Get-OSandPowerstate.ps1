@@ -1,8 +1,8 @@
 #######################################################################
-######	This script is intended to be run in powerCLI			#######
-######	It relies on output from Get-VMs.ps1					#######
+######	This script is intended to be run in powerCLI		#######
+######	It relies on output from Get-VMs.ps1			#######
 ######	Sorts through all VMs, outputs WServers and powerstate	#######
-######	Author Fredrik Treimo.									#######
+######	Author Fredrik Treimo.					#######
 #######################################################################
 
 
