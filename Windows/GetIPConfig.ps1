@@ -42,4 +42,3 @@ else {
 	#Do nothing
 }
 
-#$(Test-Connection 10.178.127.42 -quiet)
