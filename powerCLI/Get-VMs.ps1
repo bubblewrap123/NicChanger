@@ -1,8 +1,8 @@
 #######################################################################
-######	This script is intended to be run in powerCLI			      #######
-######	It outputs all VMs in vCenter to a file	-				        #######
-######	and starts Get-OSandPowerstate.ps1 when done.			      #######
-######	Author Fredrik Treimo.									                #######
+######  This script is intended to be run in powerCLI           #######
+######  It outputs all VMs in vCenter to a file	-               #######
+######  and starts Get-OSandPowerstate.ps1 when done.           #######
+######  Author Fredrik Treimo.                                  #######
 #######################################################################
 
 $FilePath = "c:\tools\Network_Interface.csv"
