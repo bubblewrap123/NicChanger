@@ -1,15 +1,13 @@
-#/********************************************************           
-#    * hello -- Outputs all VMs in vCenter to a file        *   
-#    *                                                      *   
-#    * Author:  Fredrik, Treimo                             *   
-#    *                                                      *   
-#    * Purpose:  outputs all VMs in vCenter to a file       *   
-#    *                                                      *   
-#    * Usage:                                               *   
-#    *      This script is intended to be run with powerCLI *   
-#    ********************************************************/ 
-
-
+#    /*******************************************************
+#    * Get-VMs.ps1 -- Outputs all VMs in vCenter to file    *
+#    *                                                      *
+#    * Author:  Fredrik, Treimo                             *
+#    *                                                      *
+#    * Purpose:  Outputs all VMs in vCenter to a file       *
+#    *                                                      *
+#    * Usage:                                               *
+#    *      This script is intended to be run with powerCLI *
+#    ********************************************************/
 
 $FilePath = "c:\tools\Network_Interface.csv"
 

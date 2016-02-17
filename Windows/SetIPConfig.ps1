@@ -1,9 +1,13 @@
-#######################################################################
-######	This script is intended to be run as a scheduled task	#######
-######	It uses the output from GetIPConfig.ps1 and stores it-	#######
-######	in the active VMXNET3 adapter configuration		#######
-######	Author Fredrik Treimo.					#######
-#######################################################################
+#    /*******************************************************
+#    * SetIPConfig.ps1 -- Applied on boot once              *
+#    *                                                      *
+#    * Author:  Fredrik, Treimo                             *
+#    *                                                      *
+#    * Purpose: Configures the VMXNET3 adapter with -       *
+#    *          the NIC-config stored in IpConfig.csv       *
+#    * Usage:                                               *
+#    *      Intended to be run as a scheduled task          *
+#    ********************************************************/
 
 $computername = $env:computername
 $FilePath = "c:\$computername\IpSettings.csv"

@@ -1,9 +1,13 @@
-#######################################################################
-######	This script is intended to be run as a scheduled task	#######
-######	It stores the active NIC IP config to file.		#######
-######	After this is done, you can safely run Change-NIC.ps1	#######
-######	Author Fredrik Treimo.					#######
-#######################################################################
+#    /*******************************************************
+#    * GetIPConfig.ps1 -- Applied as scheduled task         *
+#    *                                                      *
+#    * Author:  Fredrik, Treimo                             *
+#    *                                                      *
+#    * Purpose: Stores the E1000 NIC config to file -       *
+#    *          IpConfig.csv                                *
+#    * Usage:                                               *
+#    *      Intended to be run as a scheduled task          *
+#    ********************************************************/
 
 $computername = $env:computername
 $FilePath = "c:\$computername\IpSettings.csv"

@@ -1,12 +1,15 @@
-#######################################################################
-######	This script is intended to be run in powerCLI		#######
-######	It relies on output from Get-OSandPowerstate -		#######
-######	and changes the NICs from E1000 to VMXNET3 VMs		#######
-######	Author Fredrik Treimo.					#######
-#######################################################################
+#    /*******************************************************
+#    * Change-NIC.ps1 -- Uses data from Get-VMOSPS.ps1      *
+#    *                                                      *
+#    * Author:  Fredrik, Treimo                             *
+#    *                                                      *
+#    * Purpose: Changes  NICs from E1000 to VMXNET3         *
+#    *                                                      *
+#    * Usage:                                               *
+#    *      This script is intended to be run with powerCLI *
+#    ********************************************************/
 
 $FilePath = "c:\tools\Network_Interface_Sorted.csv"
-
 
 import-CSV $FilePath | ForEach-Object {
 	$VM = $_.VM

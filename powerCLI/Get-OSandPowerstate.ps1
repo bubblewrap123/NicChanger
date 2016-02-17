@@ -1,14 +1,18 @@
-#######################################################################
-######	This script is intended to be run in powerCLI		#######
-######	It relies on output from Get-VMs.ps1			#######
-######	Sorts through all VMs, outputs WServers and powerstate	#######
-######	Author Fredrik Treimo.					#######
-#######################################################################
-
+#    /*******************************************************
+#    * Get-VMOSPS.ps1 -- Started from Get-VMs.ps1           *
+#    *                                                      *
+#    * Author:  Fredrik, Treimo                             *
+#    *                                                      *
+#    * Purpose:  Sorting VMs into VM name & powerstate      *
+#    *                                                      *
+#    * Usage:                                               *
+#    *      This script is intended to be run with powerCLI *
+#    ********************************************************/
 
 $FilePath = "c:\tools\Network_Interface.csv"
 $FilePathOutput = "c:\tools\Network_Interface_Sorted.csv"
 
+#Header in output file
 "VM,Powerstate" -join ',' | Out-File -FilePath $FilePathOutput -Width 200;
 
 import-CSV $FilePath | ForEach-Object {
