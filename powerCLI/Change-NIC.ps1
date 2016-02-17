@@ -1,6 +1,6 @@
 #######################################################################
 ######	This script is intended to be run in powerCLI			#######
-######	It relies on output from Get-OSandPowerstate - 			#######
+######	It relies on output from Get-OSandPowerstate -			#######
 ######	and changes the NICs from E1000 to VMXNET3 VMs			#######
 ######	Author Fredrik Treimo.									#######
 #######################################################################
