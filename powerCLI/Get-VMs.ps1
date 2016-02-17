@@ -1,19 +1,12 @@
-#######################################################################
-######  This script is intended to be run in powerCLI           #######
-######  It outputs all VMs in vCenter to a file	-               #######
-######  and starts Get-OSandPowerstate.ps1 when done.           #######
-######  Author Fredrik Treimo.                                  #######
-#######################################################################
-
 #/********************************************************           
-#    * hello -- program to print out "Hello World".         *   
+#    * hello -- Outputs all VMs in vCenter to a file        *   
 #    *                                                      *   
 #    * Author:  Fredrik, Treimo                             *   
 #    *                                                      *   
 #    * Purpose:  outputs all VMs in vCenter to a file       *   
 #    *                                                      *   
 #    * Usage:                                               *   
-#    *      Runs the program and the message appears.       *   
+#    *      This script is intended to be run with powerCLI *   
 #    ********************************************************/ 
 
 
