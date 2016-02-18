@@ -28,6 +28,8 @@ if ($(Test-Path $FilePath) -eq $TRUE) {
 			$MASK = $_.MASK
 			$GW = $_.GW
 			$MAC = $_.MAC
+			$MAC_Status
+			$DHCP = $_.DHCP
 			#Checking if DNS2 is set, if exist combining DNS1 and DNS2 into DNS3
 			if ($_.DNS2) {
 				$DNS3 = $_.DNS1,$_.DNS2
@@ -36,12 +38,13 @@ if ($(Test-Path $FilePath) -eq $TRUE) {
 				$DNS3 = $_.DNS1
 			}
 			if ($MAC -eq $wmi.MACAddress) {
+				$MAC_Status = "OK"
 				write-host "MAC OK"
 			}
 			else {
+				$MAC_Status = "NOT EQUAL"
 				write-host "MAC NOT OK"
 			}
-			$DHCP = $_.DHCP
 			if ($DHCP -eq "False") {
 				"Config:`r`n"+"IP "+$_.IP,"`r`nMASK: "+$_.MASK,"`r`nGW: "+$_.GW,"`r`nDHCP: "+$DHCP,"`r`nMAC: "+$MAC,"`r`nDNS: "+$DNS3 | Out-File -FilePath "$FolderPath\OK.txt"
 				$wmi.EnableStatic($IP, $MASK)
@@ -58,5 +61,5 @@ if ($(Test-Path $FilePath) -eq $TRUE) {
 	}
 }
 else {
-	"FAILED: Could not find file: IpSettings.csv" | Out-File -FilePath "$FolderPath\FAIL.txt"
+	write-host "FAILED: Could not find file: IpSettings.csv" #| Out-File -FilePath "$FolderPath\FAIL.txt"
 }
