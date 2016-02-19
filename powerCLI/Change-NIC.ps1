@@ -21,11 +21,12 @@ import-CSV $FilePath | ForEach-Object {
 		Start-VM $VM #-RunAsync
 		write-host $VM "started"
 	}
-	elseif ($VMPowerstate -eq "PoweredOn") {
-		Shutdown-VMGuest $VM -Confirm:$false
+	elseif ($VMPowerstate -eq "PoweredOn") { 
+		Shutdown-VMGuest $VM -Confirm:$false #We need to check if the guest OS is shut down before proceeding.. The next lines will fail otherwize.
 		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
 		Start-VM $VM
 	}
 	else {
 	Write-host $VM " in unknown state, let's not try to change the NIC on this VM.."
+	}
 }
