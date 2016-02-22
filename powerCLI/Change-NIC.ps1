@@ -23,7 +23,11 @@ import-CSV $FilePath | ForEach-Object {
 	}
 	elseif ($VMPowerstate -eq "PoweredOn") { 
 		Shutdown-VMGuest $VM -Confirm:$false #We need to check if the guest OS is shut down before proceeding.. The next lines will fail otherwize.
+		while ((get-vm $VM).powerstate) -eq "PoweredOn") {
+			 start-sleep 5
+		}
 		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
+		start-sleep 10
 		Start-VM $VM
 	}
 	else {
