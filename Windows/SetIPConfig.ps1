@@ -16,12 +16,13 @@ if ($(Test-Path $FilePath) -eq $TRUE) {
 	$index = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').index
 	$wmi = Get-WmiObject win32_networkadapterconfiguration -filter "Index = $index"
 	$wmiDescription = (Get-WmiObject win32_networkadapterconfiguration -Filter 'ipenabled = "true"').Description
-
+	#Network adapter type equals E1000?
 	if ($wmiDescription -like "Intel(R)*") {
 		write-host "E1000"
 		write-host $wmiDescription
 		"E1000, skipping" | Out-File -FilePath "$FolderPath\NIC_IS_E1000.txt"
 	}
+	#Network adapter type equals VMXNET3?
 	Elseif ($wmiDescription -like "vmxnet3*") {
 		Import-CSV $FilePath | ForEach-Object {
 			$IP = $_.IP
@@ -37,7 +38,7 @@ if ($(Test-Path $FilePath) -eq $TRUE) {
 			else {
 				$DNS3 = $_.DNS1
 			}
-			if ($MAC -eq $wmi.MACAddress) {
+			if ($MAC -eq $wmi.MACAddress) { #Is not currently used, checks if the MAC is the same after the NIC change
 				$MAC_Status = "OK"
 				write-host "MAC OK"
 			}

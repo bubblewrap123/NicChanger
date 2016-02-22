@@ -24,7 +24,7 @@ If ($(Test-Path $FilePath) -eq $FALSE) { #Stores NIC IP settings if config file 
 		#Is DHCP enabled?
 		$DHCP = $wmi.DHCPEnabled
 		#Does folder already exist?
-		if ($(Test-Path $FolderPath) -eq $FALSE) { 
+		if ($(Test-Path $FolderPath) -eq $FALSE) {
 			New-Item $FolderPath -type directory
 			}
 		else {
@@ -45,7 +45,6 @@ If ($(Test-Path $FilePath) -eq $FALSE) { #Stores NIC IP settings if config file 
 	}
 }
 else {
-	#write-host "file exist, skipping"
-	#Do nothing
+	#Do nothing, IpSettings.csv already exists
 }
 

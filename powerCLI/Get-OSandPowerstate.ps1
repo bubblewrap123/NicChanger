@@ -24,12 +24,12 @@ import-CSV $FilePath | ForEach-Object {
 		write-host $VMPowerstate
 		$VM,$VMPowerstate -join ',' | Out-File -FilePath $FilePathOutput -Append -Width 200;
 	}
-	elseif ($OS -like 'Red Hat*'){
+	elseif ($OS -like 'Red Hat*'){ #We only have rhel VMs
 		write-host "Linux"
 		write-host $OS
 	}
 	else {
-		if ($OS) {
+		if ($OS) { #If $OS returns something usefull display it
 			write-host "Unidentified"
 			write-host $OS
 		}
@@ -39,4 +39,3 @@ import-CSV $FilePath | ForEach-Object {
 		}
 	}
 }
-
