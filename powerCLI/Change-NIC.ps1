@@ -16,15 +16,15 @@ import-CSV $FilePath | ForEach-Object {
 	$VMPowerstate = $_.Powerstate
 	
 	if ($VMPowerstate -eq "PoweredOff") { #Må tenke litt på hva vi gjør her. Trenger vi å skru den på først, for at den skal lagre IP settings via scheduled task?
-		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
-		write-host "Nic changed on:" $VM
-		Start-VM $VM #-RunAsync
-		write-host $VM "started"
+		#get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
+		#write-host "Nic changed on:" $VM
+		#Start-VM $VM #-RunAsync
+		#write-host $VM "started"
 	}
 	elseif ($VMPowerstate -eq "PoweredOn") { 
 		Shutdown-VMGuest $VM -Confirm:$false #We need to check if the guest OS is shut down before proceeding.. The next lines will fail otherwize.
-		while ((get-vm $VM).powerstate) -eq "PoweredOn") {
-			 start-sleep 5
+		while (((get-vm $VM).powerstate) -eq "PoweredOn") {
+			 start-sleep 10
 		}
 		get-vm $VM|get-networkadapter|set-networkadapter -type vmxnet3 -Confirm:$false
 		start-sleep 10
