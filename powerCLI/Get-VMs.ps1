@@ -1,7 +1,7 @@
 #    /*******************************************************
 #    * Get-VMs.ps1 -- Outputs all VMs in vCenter to file    *
 #    *                                                      *
-#    * Author:  Fredrik, Treimo                             *
+#    * Author:  Fredrik, T                                  *
 #    *                                                      *
 #    * Purpose:  Outputs all VMs in vCenter to a file       *
 #    *                                                      *

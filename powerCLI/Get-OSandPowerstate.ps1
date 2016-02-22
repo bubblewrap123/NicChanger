@@ -1,7 +1,7 @@
 #    /*******************************************************
 #    * Get-VMOSPS.ps1 -- Started from Get-VMs.ps1           *
 #    *                                                      *
-#    * Author:  Fredrik, Treimo                             *
+#    * Author:  Fredrik,                                    *
 #    *                                                      *
 #    * Purpose:  Sorting VMs into VM name & powerstate      *
 #    *                                                      *

@@ -1,7 +1,7 @@
 #    /*******************************************************
 #    * SetIPConfig.ps1 -- Applied on boot once              *
 #    *                                                      *
-#    * Author:  Fredrik, Treimo                             *
+#    * Author:  Fredrik, T                                  *
 #    *                                                      *
 #    * Purpose: Configures the VMXNET3 adapter with -       *
 #    *          the NIC-config stored in IpConfig.csv       *

@@ -1,7 +1,7 @@
 #    /*******************************************************
 #    * GetIPConfig.ps1 -- Applied as scheduled task         *
 #    *                                                      *
-#    * Author:  Fredrik, Treimo                             *
+#    * Author:  Fredrik,                                    *
 #    *                                                      *
 #    * Purpose: Stores the E1000 NIC config to file -       *
 #    *          IpConfig.csv                                *

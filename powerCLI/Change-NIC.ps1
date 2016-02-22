@@ -1,7 +1,7 @@
 #    /*******************************************************
 #    * Change-NIC.ps1 -- Uses data from Get-OSandPowerstate *
 #    *                                                      *
-#    * Author:  Fredrik, Treimo                             *
+#    * Author:  Fredrik, T                                  *
 #    *                                                      *
 #    * Purpose: Changes  NICs from E1000 to VMXNET3         *
 #    *                                                      *
