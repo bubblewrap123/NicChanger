@@ -1,5 +1,5 @@
 # NicChanger
-Change network adapter from E1000 to VMXNET3 whitout losing Windows IP adapter settings.
+Change network adapter from E1000 to VMXNET3 without losing Windows IP adapter settings.
 
 # Tested on
 + Windows Server 2008 & R2
